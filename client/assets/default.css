@@ -121,3 +121,7 @@ input[type='submit']:hover {
   flex-flow: column wrap;
   gap: 20px;
 }
+
+#postBtn {
+  margin-left: 14px;
+}
