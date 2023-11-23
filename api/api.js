@@ -16,7 +16,15 @@ api.get('/', (req, res) => {
   res.status(200).json({
     name: 'Diary API',
     description: 'Create vivid snapshots of your memories.',
-    endpoints: ['']
+    endpoints: [
+      'GET  /entries',
+      'GET  /entries/:id',
+      'POST  /entries',
+      'DELETE  /entries/:id',
+      'POST  /users/login',
+      'POST  /users/register',
+      'GET  /users/logout'
+    ]
   });
 });
 
