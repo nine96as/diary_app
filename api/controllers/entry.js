@@ -1,6 +1,6 @@
 const Entry = require('../models/Entry');
 const Token = require('../models/Token');
-const User = require('../models/user');
+const User = require('../models/User');
 
 const index = async (req, res) => {
   try {
