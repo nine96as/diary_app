@@ -1,3 +1,7 @@
+const Entry = require('../models/Entry');
+const Token = require('../models/Token');
+const User = require('../models/user');
+
 const index = async (req, res) => {
   try {
     const entries = await Entry.getAll();
