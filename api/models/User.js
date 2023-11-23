@@ -9,10 +9,7 @@ class User {
   }
 
   static async getOneById(id) {
-    const resp = await db.query(
-      'SELECT * FROM user_account WHERE user_id = $1',
-      [id]
-    );
+    const resp = await db.query('SELECT * FROM users WHERE user_id = $1', [id]);
     if (resp.rows.length !== 1) {
       throw new Error('Unable to locate user.');
     }
@@ -20,10 +17,9 @@ class User {
   }
 
   static async getOneByUsername(username) {
-    const resp = await db.query(
-      'SELECT * FROM user_account WHERE username = $1',
-      [username]
-    );
+    const resp = await db.query('SELECT * FROM users WHERE username = $1', [
+      username
+    ]);
     if (resp.rows.length !== 1) {
       throw new Error('Unable to locate user.');
     }
@@ -33,7 +29,7 @@ class User {
   static async create(data) {
     const { username, password, isAdmin } = data;
     let resp = await db.query(
-      'INSERT INTO user_account (username, password) VALUES ($1, $2) RETURNING user_id;',
+      'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING user_id;',
       [username, password]
     );
     const newId = resp.rows[0].user_id;
