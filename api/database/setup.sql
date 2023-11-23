@@ -13,7 +13,7 @@ CREATE TABLE entries (
     entry_id INT GENERATED ALWAYS AS IDENTITY,
     user_id INT NOT NULL,
     content VARCHAR (500) NOT NULL,
-    date DATETIME,
+    date DATE,
     PRIMARY KEY (entry_id),
     FOREIGN KEY (user_id) REFERENCES user_account("user_id")
 );
