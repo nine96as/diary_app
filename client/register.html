@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="./assets/favicon.ico" />
     <link rel="stylesheet" href="./assets/default.css" />
+    <link rel="stylesheet" href="./assets/login_reg.css" />
     <script src="./assets/register.js" defer></script>
     <title>Discretion</title>
   </head>
@@ -17,15 +18,15 @@
     <hr />
     <main>
       <form id="register-form">
-        <fieldset>
+        <fieldset class="reg-fieldset">
           <label for="username">Username:</label>
           <input type="text" id="username" name="username" />
         </fieldset>
-        <fieldset>
+        <fieldset class="reg-fieldset">
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" />
         </fieldset>
-        <input type="submit" value="Register" />
+        <input type="submit" class="register-btn" value="Register" />
       </form>
       <p>Already registered? <a href="./login.html">Log in here</a>.</p>
     </main>

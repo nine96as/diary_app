@@ -82,6 +82,7 @@ form {
 
 fieldset {
   margin-bottom: 15px;
+  border:none;
 }
 
 label {
@@ -96,10 +97,11 @@ textarea {
   padding: 8px;
   box-sizing: border-box;
   border: 1px solid #ccc;
+  /* border:none; */
   border-radius: 4px;
 }
 
-input[type='submit'] {
+input[type='submit'],button {
   background-color: #3498db;
   color: #fff;
   padding: 10px 15px;
@@ -112,3 +114,5 @@ input[type='submit'] {
 input[type='submit']:hover {
   background-color: #2980b9;
 }
+
+
