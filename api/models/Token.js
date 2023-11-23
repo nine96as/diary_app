@@ -24,7 +24,7 @@ class Token {
     const resp = await db.query('SELECT * FROM token WHERE token_id = $1', [
       id
     ]);
-    if (resp.rows.length != 1) {
+    if (resp.rows.length !== 1) {
       throw new Error('Unable to locate token.');
     } else {
       return new Token(resp.rows[0]);
