@@ -140,6 +140,7 @@ img {
 }
 
 .index-container {
+  min-height: 100vw;
   display: flex;
   flex-flow: column;
   gap: 20px;
