@@ -1,11 +1,12 @@
 const db = require('../database/connect');
 
 class Entry {
-  constructor({ entry_id, user_id, title, content }) {
+  constructor({ entry_id, user_id, title, content, date }) {
     this.id = entry_id;
     this.user_id = user_id;
     this.title = title;
     this.content = content;
+    this.date = date;
   }
 
   static async getAll() {

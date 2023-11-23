@@ -4,7 +4,11 @@ const User = require('../models/User');
 
 const index = async (req, res) => {
   try {
+    const userToken = req.headers['authorization'];
+    const token = await Token.getOneByToken(userToken);
+
     const entries = await Entry.getAll();
+
     res.json(entries);
   } catch (e) {
     res.status(500).json({ error: e.message });
