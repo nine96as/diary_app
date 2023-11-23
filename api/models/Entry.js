@@ -1,9 +1,10 @@
 const db = require('../database/connect');
 
 class Entry {
-  constructor({ entry_id, user_id, content }) {
+  constructor({ entry_id, user_id, title, content }) {
     this.id = entry_id;
     this.user_id = user_id;
+    this.title = title;
     this.content = content;
   }
 
@@ -25,7 +26,7 @@ class Entry {
   static async create(data) {
     const { title, content, entry_id } = data;
     let resp = await db.query(
-      'INSERT INTO entries (content, user_id) VALUES ($1, $2) RETURNING entry_id;',
+      'INSERT INTO entries (title, content, user_id) VALUES ($1, $2, $3) RETURNING entry_id;',
       [title, content, entry_id]
     );
     const newId = resp.rows[0].entry_id;
