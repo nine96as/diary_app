@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const logger = require('morgan');
 
+const entryRouter = require('./routers/entry');
+const userRouter = require('./routers/user');
+
 const api = express();
 
 // middlewares
@@ -16,5 +19,8 @@ api.get('/', (req, res) => {
     endpoints: ['']
   });
 });
+
+api.use('/entries', entryRouter);
+api.use('/users', userRouter);
 
 module.exports = api;
