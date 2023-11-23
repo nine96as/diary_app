@@ -24,10 +24,10 @@ class Entry {
   }
 
   static async create(data) {
-    const { title, content, entry_id } = data;
+    const { title, content, user_id } = data;
     let resp = await db.query(
       'INSERT INTO entries (title, content, user_id) VALUES ($1, $2, $3) RETURNING entry_id;',
-      [title, content, entry_id]
+      [title, content, user_id]
     );
     const newId = resp.rows[0].entry_id;
     const newEntry = await Entry.getOneById(newId);
