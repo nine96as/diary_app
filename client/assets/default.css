@@ -145,3 +145,7 @@ img {
   flex-flow: column;
   gap: 20px;
 }
+
+textarea {
+  font-family: sans-serif;
+}
