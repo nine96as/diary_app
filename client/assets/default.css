@@ -123,6 +123,6 @@ input[type='submit']:hover {
 }
 
 #postBtn,
-h2 {
+#post-form_title {
   margin-left: 14px;
 }
