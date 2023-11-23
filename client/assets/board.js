@@ -47,7 +47,8 @@ const createPostElement = (data) => {
   post.appendChild(content);
 
   const date = document.createElement('p');
-  date.textContent = moment(data['date']).startOf('hour').fromNow();
+  date.textContent = moment(data['date']).fromNow();
+  date.style.fontWeight = 'bold';
   post.appendChild(date);
 
   return post;

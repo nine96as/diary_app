@@ -127,13 +127,11 @@ input[type='submit']:hover {
   margin-left: 14px;
 }
 
-.ind_main {
- 
-    margin: 20px;
-    display: flex;
-    flex-direction: row ;
-    align-items: center;
-  
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
 }
 
 img {
