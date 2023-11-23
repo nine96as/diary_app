@@ -1,5 +1,6 @@
 const createPostElement = (data) => {
   const post = document.createElement('div');
+  post.classList.add('container');
   post.id = 'post';
 
   const headerContainer = document.createElement('div');
