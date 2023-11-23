@@ -44,6 +44,7 @@ const createEntryElement = (data) => {
 
   const content = document.createElement('p');
   content.textContent = data['content'];
+  content.style.paddingRight = '40px';
   entry.appendChild(content);
 
   const date = document.createElement('p');
