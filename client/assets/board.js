@@ -44,6 +44,10 @@ const createPostElement = (data) => {
   content.textContent = data['content'];
   post.appendChild(content);
 
+  const date = document.createElement('p');
+  date.textContent = data['date'];
+  post.appendChild(date);
+
   return post;
 };
 
