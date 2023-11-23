@@ -48,6 +48,7 @@ const createPostElement = (data) => {
 
   const date = document.createElement('p');
   date.textContent = moment(data['date']).fromNow();
+  date.style.fontWeight = 'bold';
   post.appendChild(date);
 
   return post;
