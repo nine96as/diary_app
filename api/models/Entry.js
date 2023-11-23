@@ -9,8 +9,10 @@ class Entry {
     this.date = date;
   }
 
-  static async getAll() {
-    const resp = await db.query('SELECT * FROM entries');
+  static async getAllByUser(user_id) {
+    const resp = await db.query('SELECT * FROM entries WHERE user_id = $1', [
+      user_id
+    ]);
     return resp.rows.map((p) => new Entry(p));
   }
 
