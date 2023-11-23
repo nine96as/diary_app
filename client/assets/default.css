@@ -126,3 +126,10 @@ input[type='submit']:hover {
 #post-form_title {
   margin-left: 14px;
 }
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
