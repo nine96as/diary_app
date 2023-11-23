@@ -10,9 +10,10 @@ class Entry {
   }
 
   static async getAllByUser(user_id) {
-    const resp = await db.query('SELECT * FROM entries WHERE user_id = $1', [
-      user_id
-    ]);
+    const resp = await db.query(
+      'SELECT * FROM entries WHERE user_id = $1 ORDER BY date DESC',
+      [user_id]
+    );
     return resp.rows.map((p) => new Entry(p));
   }
 
