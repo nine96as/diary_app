@@ -10,9 +10,7 @@ class User {
 
   static async getOneById(id) {
     const resp = await db.query('SELECT * FROM users WHERE user_id = $1', [id]);
-    if (resp.rows.length !== 1) {
-      throw new Error('Unable to locate user.');
-    }
+    if (resp.rows.length !== 1) throw new Error('Unable to locate user.');
     return new User(resp.rows[0]);
   }
 
@@ -20,9 +18,7 @@ class User {
     const resp = await db.query('SELECT * FROM users WHERE username = $1', [
       username
     ]);
-    if (resp.rows.length !== 1) {
-      throw new Error('Unable to locate user.');
-    }
+    if (resp.rows.length !== 1) throw new Error('Unable to locate user.');
     return new User(resp.rows[0]);
   }
 
