@@ -126,3 +126,17 @@ input[type='submit']:hover {
 #post-form_title {
   margin-left: 14px;
 }
+
+.ind_main {
+ 
+    margin: 20px;
+    display: flex;
+    flex-direction: row ;
+    align-items: center;
+  
+}
+
+img {
+  width:100%;
+  height: 400px;
+}
