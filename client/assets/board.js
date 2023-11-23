@@ -1,14 +1,14 @@
-const createPostElement = (data) => {
-  const post = document.createElement('div');
-  post.classList.add('container');
-  post.id = 'post';
+const createEntryElement = (data) => {
+  const entry = document.createElement('div');
+  entry.classList.add('container');
+  entry.id = 'entry';
 
   const headerContainer = document.createElement('div');
   headerContainer.style.display = 'flex';
   headerContainer.style.justifyContent = 'space-between';
   headerContainer.style.alignItems = 'center';
   headerContainer.className = 'header';
-  post.appendChild(headerContainer);
+  entry.appendChild(headerContainer);
 
   const header = document.createElement('h2');
   header.textContent = data['title'];
@@ -44,17 +44,17 @@ const createPostElement = (data) => {
 
   const content = document.createElement('p');
   content.textContent = data['content'];
-  post.appendChild(content);
+  entry.appendChild(content);
 
   const date = document.createElement('p');
   date.textContent = moment(data['date']).fromNow();
   date.style.fontWeight = 'bold';
-  post.appendChild(date);
+  entry.appendChild(date);
 
-  return post;
+  return entry;
 };
 
-document.getElementById('post-form').addEventListener('submit', async (e) => {
+document.getElementById('entry-form').addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const form = new FormData(e.target);
@@ -82,7 +82,7 @@ document.getElementById('post-form').addEventListener('submit', async (e) => {
   }
 });
 
-const loadPosts = async () => {
+const loadEntries = async () => {
   const options = {
     headers: {
       Authorization: localStorage.getItem('token')
@@ -91,12 +91,12 @@ const loadPosts = async () => {
   const response = await fetch('http://localhost:3000/entries', options);
 
   if (response.status === 200) {
-    const posts = await response.json();
+    const entries = await response.json();
 
-    const container = document.getElementById('posts');
+    const container = document.getElementById('entries');
 
-    posts.forEach((p) => {
-      const elem = createPostElement(p);
+    entries.forEach((p) => {
+      const elem = createEntryElement(p);
       container.appendChild(elem);
     });
   } else {
@@ -121,4 +121,4 @@ document.getElementById('logout').addEventListener('click', async () => {
   }
 });
 
-loadPosts();
+loadEntries();
