@@ -122,6 +122,7 @@ input[type='submit']:hover {
   gap: 20px;
 }
 
-#postBtn {
+#postBtn,
+h2 {
   margin-left: 14px;
 }
