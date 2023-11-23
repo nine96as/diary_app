@@ -7,7 +7,7 @@ const index = async (req, res) => {
     const userToken = req.headers['authorization'];
     const token = await Token.getOneByToken(userToken);
 
-    const entries = await Entry.getAll();
+    const entries = await Entry.getAllByUser(token.user_id);
 
     res.json(entries);
   } catch (e) {
@@ -47,7 +47,7 @@ const destroy = async (req, res) => {
 
     const entry = await Entry.getOneById(id);
 
-    if (post.user_id === user.id || user.isAdmin) {
+    if (entry.user_id === user.id || user.isAdmin) {
       const result = await entry.destroy();
       res.status(204).end();
     } else {
