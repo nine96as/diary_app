@@ -1,72 +1,89 @@
-function createPostElement(data) {
-  const currentDate = new Date();
-  const formattedDate = currentDate.toLocaleString();
-
+const createPostElement = (data) => {
   const post = document.createElement('div');
-  post.className = 'post';
+  post.id = 'post';
+
+  const headerContainer = document.createElement('div');
+  headerContainer.style.display = 'flex';
+  headerContainer.style.justifyContent = 'space-between';
+  headerContainer.style.alignItems = 'center';
+  headerContainer.className = 'header';
+  post.appendChild(headerContainer);
 
   const header = document.createElement('h2');
   header.textContent = data['title'];
-  post.appendChild(header);
+  headerContainer.appendChild(header);
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.id = 'delete';
+  deleteBtn.textContent = 'Delete';
+
+  deleteBtn.addEventListener('click', async () => {
+    const options = {
+      headers: {
+        Authorization: localStorage.getItem('token')
+      },
+      method: 'DELETE'
+    };
+
+    const response = await fetch(
+      `http://localhost:3000/entries/${data['id']}`,
+      options
+    );
+
+    if (response.status === 204) {
+      window.location.reload();
+    } else {
+      const respData = await response.json();
+      alert(respData.error);
+    }
+  });
+
+  headerContainer.appendChild(deleteBtn);
 
   const content = document.createElement('p');
   content.textContent = data['content'];
   post.appendChild(content);
 
-  // datetime
-  console.log('datetime-element=', data['datetime']);
-  const datetime = document.createElement('p');
-  datetime.textContent = `Created At: ${formattedDate}`;
-  post.appendChild(datetime);
-
-  //  // Create a span to hold the datetime in the post-form
-  //      const createdAtSpan = document.getElementById("created-at");
-  //     createdAtSpan.textContent = `Created At: ${data["datetime"]}`;
-
   return post;
-}
+};
 
 document.getElementById('post-form').addEventListener('submit', async (e) => {
   e.preventDefault();
-  //adding a date time
-  const form = new FormData(e.target);
-  // const currentDate = new Date();
-  // const formattedDate = currentDate.toLocaleString();
 
-  // Set the date and time in the form
-  // form.set("datetime", formattedDate);
+  const form = new FormData(e.target);
 
   const options = {
     method: 'POST',
     headers: {
+      Authorization: localStorage.getItem('token'),
       Accept: 'application/json',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       title: form.get('title'),
       content: form.get('content')
-      // datetime: form.get("datetime")
-      //datetime: formattedDate
     })
   };
 
-  const result = await fetch('http://localhost:3000/posts', options);
+  const response = await fetch('http://localhost:3000/entries', options);
+  const data = await response.json();
 
-  if (result.status == 201) {
-    // console.log("formattedDate",formattedDate)
+  if (response.status === 201) {
     window.location.reload();
+  } else {
+    alert(data.error);
   }
 });
 
-async function loadPosts() {
+const loadPosts = async () => {
   const options = {
     headers: {
       Authorization: localStorage.getItem('token')
     }
   };
-  const response = await fetch('http://localhost:3000/posts', options);
+  const response = await fetch('http://localhost:3000/entries', options);
 
-  if (response.status == 200) {
+  if (response.status === 200) {
     const posts = await response.json();
 
     const container = document.getElementById('posts');
@@ -76,9 +93,9 @@ async function loadPosts() {
       container.appendChild(elem);
     });
   } else {
-    window.location.assign('./index.html'); //if there is no token redirect to the main
+    window.location.assign('./index.html');
   }
-}
+};
 
 document.getElementById('logout').addEventListener('click', async () => {
   const options = {
