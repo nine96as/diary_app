@@ -14,7 +14,7 @@ CREATE TABLE entries (
     user_id INT NOT NULL,
     title VARCHAR (100) NOT NULL,
     content VARCHAR (500) NOT NULL,
-    date DATE,
+    date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (entry_id),
     FOREIGN KEY (user_id) REFERENCES users("user_id")
 );
