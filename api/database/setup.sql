@@ -20,7 +20,7 @@ CREATE TABLE entries (
 );
 
 
-CREATE TABLE token (
+CREATE TABLE tokens (
     token_id INT GENERATED ALWAYS AS IDENTITY,
     user_id INT NOT NULL,
     token CHAR(36) UNIQUE NOT NULL,
