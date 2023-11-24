@@ -61,7 +61,7 @@ The API requires:
 
 - A `DB_URL` to execute the necessary SQL queries to ensure the API's operation
 - A `PORT` to deploy the API with (`3000` will be used)
-- A `BCRYPT_SALT_ROUNDS` value to provide the hashing level required for the user password (`12` will be used)
+- A `BCRYPT_SALT_ROUNDS` value to provide the hashing level required for the user password
 
 ---
 
@@ -72,5 +72,5 @@ The API requires:
    ```env
    DB_URL=postgres://...
    PORT=3000
-   BCRYPT_SALT_ROUNDS=12
+   BCRYPT_SALT_ROUNDS=
    ```
